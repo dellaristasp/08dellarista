@@ -1,14 +1,14 @@
 # Della Rista Setiawan Putri_220102080
 
-# 1. PENDAHULUAN TENTANG FRAMEWORK & CODE IGNITER
-## Apa itu FrameWork?
+## 1. PENDAHULUAN TENTANG FRAMEWORK & CODE IGNITER
+### Apa itu FrameWork?
 Framework adalah sebuah kerangka kerja yang digunakan untuk membantu developer dalam mengembangkan kode aplikasi secara konsisten.
 
-## Apa itu CodeIgniter?
+### Apa itu CodeIgniter?
 Codeigniter adalah salah satu framework untuk membuat website dengan bahasa pemrograman PHP.
 Codeigniter terkenal dengan konsep MVC-nya. MVC merupakan singkatan dari Model–View–Controller.
 
-## Keunggulan CodeIgniter:
+### Keunggulan CodeIgniter:
 1. **Ringan dan Cepat**: Framework dengan ukuran kecil dan performa tinggi.
 2. **Konfigurasi Minimal**: Membutuhkan sedikit konfigurasi untuk memulai.
 3. **Tanpa Penggunaan Command Line**: Tidak memerlukan penggunaan baris perintah.
@@ -17,27 +17,25 @@ Codeigniter terkenal dengan konsep MVC-nya. MVC merupakan singkatan dari Model�
 6. **Solusi yang Sederhana**: Menolak kompleksitas untuk pengembangan yang mudah dipahami.
 7. **Dokumentasi Lengkap**: Didukung oleh dokumentasi yang jelas dan komprehensif.
 
-## Persyaratan Server
-### PHP dan Ekstensi yang Dibutuhkan
+### Persyaratan Server
 PHP versi 7.4 atau lebih baru diperlukan, dengan ekstensi PHP berikut diaktifkan:
-intl
-mbstring
-json
+- intl
+- mbstring
+- json
+  
+### Ekstensi PHP Opsional
+Berikut adalah ekstensi PHP yang sebaiknya diaktifkan di server Anda:
+- mysqlnd (jika Anda menggunakan MySQL)
+- curl (jika Anda menggunakan CURLRequest)
+- imagick (jika Anda menggunakan kelas Image dengan ImageMagickHandler)
+- gd (jika Anda menggunakan kelas Image dengan GDHandler)
+- simplexml (jika Anda memformat XML)
 
-# Ekstensi PHP Opsional
-## Ekstensi PHP berikut sebaiknya diaktifkan pada server kita:
-#### mysqlnd (jika kita menggunakan MySQL)
-#### curl (jika kita menggunakan CURLRequest)
-#### imagick (jika kita menggunakan kelas Image ImageMagickHandler)
-#### gd (jika kita menggunakan kelas Image GDHandler)
-#### simplexml (jika kita memformat XML)
-
-# Kredit
-Kredit
+### Kredit
 CodeIgniter awalnya dikembangkan oleh EllisLab. Kerangka kerja ini ditulis untuk kinerja di dunia nyata, dengan banyak kelas pustaka, helper, dan sub-sistem asli dipinjam dari basis kode ExpressionEngine. Selama bertahun-tahun, dikembangkan dan dipelihara oleh EllisLab, Tim Pengembangan ExpressionEngine, dan sekelompok anggota komunitas yang disebut Tim Reactor.
 
-# Installasi
-## Installasi Manual
+## Installasi
+### Installasi Manual
 1. Install Manual CodeIgniter 4 dari [sini](https://codeigniter.com/).
 2. Ekstrak project ke root folder pada penyimpanan.
 3. Jalankan server dengan masuk ke dalam root project, buka code editor (Visual Studio Code), lalu Terminal, kemudian ketik:
@@ -45,7 +43,7 @@ CodeIgniter awalnya dikembangkan oleh EllisLab. Kerangka kerja ini ditulis untuk
    $ cd nama-root
    $ php spark serve
 
-# Installasi dengan Composer
+### Installasi dengan Composer
 1. Buka folder root yang digunakan untuk menyimpan CodeIgniter, klik kanan, lalu buka folder tersebut lewat Terminal.
 2. Ketikkan :
    ```bash
@@ -55,31 +53,34 @@ CodeIgniter awalnya dikembangkan oleh EllisLab. Kerangka kerja ini ditulis untuk
    $ cd nama-root
    $ php spark serve
 
-# Panduan Membangun Aplikasi Pertama
-## Ringkasan
+# 2. INSTALLASI CI MELALUI COMPOSER
+## Langkah Pertama: Installasi Composer
+Jika kita sudah menginstall PHP, kita bisa langsung lompat ke step berikutnya, yaitu installasi composer. Karena saya menggunakan MacBook / MacOS, begini caranya :
+1. Pastikan PHP sudah terinstall di MacBook, cara mengeceknya adalah dengan  membuka terminal MacBook anda, lalu ketikkan :
+   ```php -v```
+2. Unduh installer composer
+Setelah memastikan bahwa PHP sudah terinstal di MacBook anda, selanjutnya anda perlu mengunduh installer Composer. Untuk melakukannya, buka Terminal dan ketik perintah berikut:
+```curl -sS https://getcomposer.org/installer | php```
+3.  Pindahkan Installer ke Direktori /usr/local/bin
+Setelah mengunduh installer Composer, selanjutnya anda perlu memindahkan file installer tersebut ke direktori /usr/local/bin. Untuk melakukannya, ketik perintah berikut di Terminal:
+```
+sudo mkdir -p /usr/local/bin
+sudo mv composer.phar /usr/local/bin/composer
+sudo chmod +x /usr/local/bin/composer
+Perintah tersebut akan memindahkan file installer Composer ke direktori /usr/local/bin dan memberikan izin root kepada installer.
+```
+4. Periksa Instalasi Composer
+Setelah menyelesaikan proses instalasi, anda dapat memeriksa apakah Composer sudah terinstal dengan benar dengan cara membuka Terminal dan ketik perintah berikut:
+```composer```
 
-Tutorial ini akan mengenalkan kita pada framework CodeIgniter4 dan prinsip dasar arsitektur MVC. kita akan diajak membangun sebuah aplikasi CodeIgniter dasar langkah demi langkah.
 
-Jika kita belum familiar dengan PHP, tidak masalah! kita dapat memulai dengan mempelajari Tutorial PHP dari W3Schools sebelum melanjutkan.
-
-Dalam tutorial ini, kita akan membuat sebuah aplikasi berita sederhana. kita akan memulai dengan menulis kode yang dapat memuat halaman statis, kemudian membuat bagian berita yang membaca berita dari database, dan terakhir menambahkan formulir untuk membuat berita baru di database.
-
-Tutorial ini akan fokus pada hal-hal berikut:
-#### Dasar-dasar Model-View-Controller (MVC)
-#### Dasar-dasar routing
-#### Validasi formulir
-#### Melakukan kueri dasar ke database menggunakan Model CodeIgniter
-
-## Langkah Pertama: Instalasi CodeIgniter
-
+##  Installasi Code Igniter
 Kita bisa mengunduh CodeIgniter secara manual, tapi lebih baik menggunakan cara yang direkomendasikan yaitu dengan menginstal paket AppStarter melalui Composer. Cukup ketik perintah berikut di baris perintah:
 
 ```
 composer create-project codeigniter4/appstarter myCI4app
 ```
 <img width="1120" alt="Screen Shot 2024-03-18 at 09 39 39" src="https://github.com/dellaristasp/08dellarista/assets/134635732/0c4ed58e-874f-4e08-a6fa-56fc5aed01a9">
-
-## Menjalankan Aplikasi
 
 ## Menyiapkan Mode Pengembangan
 
@@ -96,7 +97,7 @@ php spark serve
 ```
 <img width="794" alt="Screen Shot 2024-03-18 at 09 42 19" src="https://github.com/dellaristasp/08dellarista/assets/134635732/db42a586-404e-4a4a-a2da-9a84da7864d5">
 
-## Halaman Selamat Datang
+# 3. HALAMAN SELAMAT DATANG
 
 Kunjungi URL berikut di browser kita:
 
@@ -106,7 +107,7 @@ Kunjungi URL berikut di browser kita:
 
 kita akan disambut dengan halaman selamat datang yang menkitakan bahwa aplikasi kita sudah berjalan dengan baik.
 
-## Debugging
+# 4. DEBUGGING
 
 ### Debug Toolbar
 
@@ -126,7 +127,7 @@ Ada beberapa hal yang perlu diperhatikan di sini:
 **Saat mengarahkan kursor ke header merah di bagian atas, akan muncul tautan pencarian yang membuka DuckDuckGo.com di tab baru dan mencari pengecualian.**
 **Mengklik tautan argumen pada setiap baris di Backtrace akan memperluas daftar argumen yang diteruskan ke panggilan fungsi tersebut.**
 
-## Menetapkan Aturan Routing
+# 5. Menetapkan Aturan Routing
 
 Routing mengaitkan URI dengan metode controller. Sebuah controller hanyalah sebuah kelas yang membantu untuk men-delegasikan pekerjaan. Kita akan membuat controller nanti.
 
@@ -164,7 +165,7 @@ Di sini, aturan kedua dalam objek `$routes` cocok dengan permintaan GET ke jalur
 
 Aturan ketiga dalam objek `$routes` cocok dengan permintaan GET ke segmen URI menggunakan placeholder (:segment), dan meneruskan parameter ke metode view() dari kelas Pages.
 
-# Static Page
+# 6. Static Page
 
 ## Controller Page
 
@@ -228,7 +229,7 @@ Terdapat footer di app/Views/templates/footer.php
 ```
 <img width="298" alt="Screen Shot 2024-03-18 at 11 32 16" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e15042ab-f5cc-4c57-aa78-87c004ee8188">
 
-## Menambahkan Logika ke Controller
+# 7. Menambahkan Logika ke Controller
 
 Di dalam folder pages di app/Views/, kita akan menemukan dua file bernama home.php dan about.php di dalam app/Views/pages/.
 
@@ -309,7 +310,7 @@ lalu kita akan melihat tampilan yang terhubung ke Kontroler Pages.php (metode pu
 <img width="1465" alt="Screen Shot 2024-03-18 at 11 35 43" src="https://github.com/dellaristasp/08dellarista/assets/134635732/95781832-df96-436e-873a-261ed24b8c5d">
 <img width="846" alt="Screen Shot 2024-03-18 at 11 36 31" src="https://github.com/dellaristasp/08dellarista/assets/134635732/98dceacc-0b2d-43fa-ad85-beac96f0d4a0">
 
-# News Section
+# 8. NEWS SECTION
 ## Buat Database dengan nama ci4
 ## Buat tabel :
 ```
@@ -416,7 +417,7 @@ $routes->get('(:segment)', [Pages::class, 'view']);
 ## Membuat tampilan terkait di `app/Views/news/view.php`
 <img width="774" alt="Screen Shot 2024-03-18 at 13 12 22" src="https://github.com/dellaristasp/08dellarista/assets/134635732/58c489d0-f9de-45b4-a6f9-ede9d3458c8d">
 
-# Create New Items
+# 9. CREATE NEW ITEMS
 ## 1. Aktifkan Filter CSRF
 Buka file `app/Config/Filters.php` dan perbarui $methods properti seperti berikut:
 <img width="552" alt="Screen Shot 2024-03-18 at 13 16 53" src="https://github.com/dellaristasp/08dellarista/assets/134635732/d953a758-225d-41bd-a3e5-f0d29edbebc7">
@@ -449,7 +450,7 @@ To :
 ## HASILNYA :
 <img width="526" alt="Screen Shot 2024-03-18 at 13 48 02" src="https://github.com/dellaristasp/08dellarista/assets/134635732/1760d3b0-1027-45da-b2f7-98e5fad38d1a">
 
-# CodeIgniter4 Overview
+# 10. CODEIGNITER4 OVERVIEW
 ## AutoLoading
 Namespace pada CodeIgniter 4 adalah cara untuk mengorganisir kelas-kelas, fungsi, dan konstanta ke dalam ruang nama yang terisolasi.
 
@@ -486,7 +487,7 @@ class MyClass
 <img width="844" alt="Screen Shot 2024-03-18 at 14 08 44" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e5b644a9-7600-4d2c-ad49-b2e3982f42c1">
 Telah muncul namespace baru yaitu `MyApp` yang telah kita buat tadi.
 
-# Factories
+# 11. FACTORIES
 Factories atau Pabrik adalah alat yang memungkinkan pengguna membuat objek atau instance dari kelas-kelas tertentu secara dinamis.
 - Command Line untuk menghapus file cache
 ```
@@ -596,11 +597,11 @@ $factoriesCache->save('config');
 exit(EXIT_SUCCESS);
 ```
 
-# Controllers
+# 12. CONTROLLERS
 <img width="483" alt="Screen Shot 2024-03-18 at 14 26 28" src="https://github.com/dellaristasp/08dellarista/assets/134635732/a61160c1-2252-4f82-a986-e431273b7fff">
 Misalnya, dalam file `Controllers News.php`, saya berada pada kelas News yang terhubung dengan rute `$routes->get('news', [News::class, 'index']);` dalam file `Route.php`. Di dalam metode `index()` dari kelas ini, perintah `return view('news/index')` terhubung dengan folder templates yang terdapat di dalam direktori Views untuk menampilkan header dan footer. Ini merujuk pada pemanggilan file `index.php`.
 
-#  URI Routing
+# 13. URI ROUTING
 Pada file `app/Config/Routes.php` terdapat route yang akan dijalankan atau ditetapkan, diantaranya :
 ```
 <?php
@@ -643,13 +644,6 @@ $routes->get('(:segment)', [Pages::class, 'view']);
   
 ### Menuju ke `app/controllers/News.php`
 
-# Working with HTTP Requests
-## Apa itu HTTP?
-HTTP adalah singkatan dari HyperText Transfer Protocol, yang merupakan protokol yang digunakan untuk pertukaran data di web.
-- Request Contoh pada Browser : Blok terlebih dahulu misal teks, lalu tekan shorcut CTRL + SHIFT + I pilih tab Network → Refresh Halaman → Pilih request yang ada.
-```
-GET / HTTP/1.1
-Host codeigniter.com
-Accept: text/html
+
 User-Agent: Chrome/46.0.2490.80
 ```
