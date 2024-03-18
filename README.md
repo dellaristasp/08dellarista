@@ -24,7 +24,7 @@ mbstring
 json
 
 # Ekstensi PHP Opsional
-##Ekstensi PHP berikut sebaiknya diaktifkan pada server kita:
+## Ekstensi PHP berikut sebaiknya diaktifkan pada server kita:
 mysqlnd (jika kita menggunakan MySQL)
 curl (jika kita menggunakan CURLRequest)
 imagick (jika kita menggunakan kelas Image ImageMagickHandler)
@@ -35,9 +35,8 @@ simplexml (jika kita memformat XML)
 Kredit
 CodeIgniter awalnya dikembangkan oleh EllisLab. Kerangka kerja ini ditulis untuk kinerja di dunia nyata, dengan banyak kelas pustaka, helper, dan sub-sistem asli dipinjam dari basis kode ExpressionEngine. Selama bertahun-tahun, dikembangkan dan dipelihara oleh EllisLab, Tim Pengembangan ExpressionEngine, dan sekelompok anggota komunitas yang disebut Tim Reactor.
 
-
 # Installasi
-### Installasi Manual
+## Installasi Manual
 1. Install Manual CodeIgniter 4 dari [sini](https://codeigniter.com/).
 2. Ekstrak project ke root folder pada penyimpanan.
 3. Jalankan server dengan masuk ke dalam root project, buka code editor (Visual Studio Code), lalu Terminal, kemudian ketik:
@@ -56,8 +55,7 @@ CodeIgniter awalnya dikembangkan oleh EllisLab. Kerangka kerja ini ditulis untuk
    $ php spark serve
 
 # Panduan Membangun Aplikasi Pertama
-
-## Ikhtisar
+## Ringkasan
 
 Tutorial ini akan mengenalkan kita pada framework CodeIgniter4 dan prinsip dasar arsitektur MVC. kita akan diajak membangun sebuah aplikasi CodeIgniter dasar langkah demi langkah.
 
@@ -71,26 +69,24 @@ Tutorial ini akan fokus pada hal-hal berikut:
 - Validasi formulir
 - Melakukan kueri dasar ke database menggunakan Model CodeIgniter
 
-### Memulai
+## Langkah Pertama: Instalasi CodeIgniter
 
-#### Langkah Pertama: Instalasi CodeIgniter
-
-kita bisa mengunduh CodeIgniter secara manual, tapi lebih baik menggunakan cara yang direkomendasikan yaitu dengan menginstal paket AppStarter melalui Composer. Cukup ketik perintah berikut di baris perintah:
+Kita bisa mengunduh CodeIgniter secara manual, tapi lebih baik menggunakan cara yang direkomendasikan yaitu dengan menginstal paket AppStarter melalui Composer. Cukup ketik perintah berikut di baris perintah:
 
 ```
 composer create-project codeigniter4/appstarter myCI4app
 ```
 <img width="1120" alt="Screen Shot 2024-03-18 at 09 39 39" src="https://github.com/dellaristasp/08dellarista/assets/134635732/0c4ed58e-874f-4e08-a6fa-56fc5aed01a9">
 
-### Menjalankan Aplikasi
+## Menjalankan Aplikasi
 
-#### Menyiapkan Mode Pengembangan
+## Menyiapkan Mode Pengembangan
 
 Secara default, CodeIgniter akan berjalan di mode produksi. Kita akan mengubahnya menjadi mode pengembangan agar lebih nyaman saat kita mengembangkan aplikasi. Caranya adalah dengan menyalin atau mengganti nama file `env` menjadi `.env`, lalu buka file tersebut dan ubah baris `CI_ENVIRONMENT` menjadi `development`.
 
 <img width="509" alt="Screen Shot 2024-03-18 at 09 51 51" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e53d96be-09f9-4703-943f-f318685855b4">
 
-#### Memulai Server
+## Memulai Server
 
 kita bisa langsung melihat aplikasi kita di browser dengan menjalankan server bawaan PHP menggunakan perintah:
 
@@ -99,7 +95,7 @@ php spark serve
 ```
 <img width="794" alt="Screen Shot 2024-03-18 at 09 42 19" src="https://github.com/dellaristasp/08dellarista/assets/134635732/db42a586-404e-4a4a-a2da-9a84da7864d5">
 
-### Halaman Selamat Datang
+## Halaman Selamat Datang
 
 Kunjungi URL berikut di browser kita:
 
@@ -109,9 +105,9 @@ Kunjungi URL berikut di browser kita:
 
 kita akan disambut dengan halaman selamat datang yang menkitakan bahwa aplikasi kita sudah berjalan dengan baik.
 
-# Debugging
+## Debugging
 
-## Debug Toolbar
+### Debug Toolbar
 
 Saat kita berada dalam mode pengembangan, kita akan melihat ikon CodeIgniter di pojok kanan bawah aplikasi kita. Klik ikon tersebut dan kita akan melihat toolbar debug.
 
@@ -169,11 +165,9 @@ Di sini, aturan kedua dalam objek `$routes` cocok dengan permintaan GET ke jalur
 
 Aturan ketiga dalam objek `$routes` cocok dengan permintaan GET ke segmen URI menggunakan placeholder (:segment), dan meneruskan parameter ke metode view() dari kelas Pages.
 
-# Membangun Aplikasi Pertama kita
+# Static Page
 
-**Static Page**
-
-**Controller Page:**
+## Controller Page
 
 Di dalam direktori app/Controllers, kita akan menemukan file Pages.php yang berisi kode sebagai berikut:
 
@@ -209,7 +203,7 @@ $routes->get('(:segment)', [Pages::class, 'view']);
 ```
 <img width="676" alt="Screen Shot 2024-03-18 at 11 06 35" src="https://github.com/dellaristasp/08dellarista/assets/134635732/225e13b1-556f-450c-bf24-cb3c05ef0dde">
 
-**Tampilan**
+## View
 
 Di dalam folder baru bernama templates, kita akan menemukan file header.php di dalam folder app/Views.
 
@@ -235,11 +229,11 @@ Terdapat footer di app/Views/templates/footer.php
 ```
 <img width="298" alt="Screen Shot 2024-03-18 at 11 32 16" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e15042ab-f5cc-4c57-aa78-87c004ee8188">
 
-**Menambahkan Logika ke Kontroler**
+## Menambahkan Logika ke Controller
 
 Di dalam folder pages di app/Views/, kita akan menemukan dua file bernama home.php dan about.php di dalam app/Views/pages/.
 
-**home.php:**
+### home.php
 
 ```html
 <!DOCTYPE html>
@@ -256,7 +250,7 @@ Di dalam folder pages di app/Views/, kita akan menemukan dua file bernama home.p
 ```
 <img width="625" alt="Screen Shot 2024-03-18 at 11 18 35" src="https://github.com/dellaristasp/08dellarista/assets/134635732/14fb44a4-c9e3-4ad4-9e8b-015741cb24f2">
 
-**about.php:**
+### about.php
 
 ```html
 <!DOCTYPE html>
@@ -312,14 +306,13 @@ class Pages extends BaseController
 <img width="1213" alt="Screen Shot 2024-03-18 at 11 21 26" src="https://github.com/dellaristasp/08dellarista/assets/134635732/5eceb704-3a1a-485a-9f64-108701664563">
 
 Buka URL: http://localhost:8080/home,
-kita akan melihat tampilan yang terhubung ke Kontroler Pages.php (metode public function view($page = 'home')) yang diarahkan pada file Route.php. Seperti : 
+lalu kita akan melihat tampilan yang terhubung ke Kontroler Pages.php (metode public function view($page = 'home')) yang diarahkan pada file Route.php. Seperti : 
 <img width="1465" alt="Screen Shot 2024-03-18 at 11 35 43" src="https://github.com/dellaristasp/08dellarista/assets/134635732/95781832-df96-436e-873a-261ed24b8c5d">
 <img width="846" alt="Screen Shot 2024-03-18 at 11 36 31" src="https://github.com/dellaristasp/08dellarista/assets/134635732/98dceacc-0b2d-43fa-ad85-beac96f0d4a0">
 
 # News Section
-Buat Database dengan nama ci4
-
-Buat tabel :
+## Buat Database dengan nama ci4
+## Buat tabel :
 ```
 CREATE TABLE news (
     id INT AUTO_INCREMENT,
@@ -370,7 +363,7 @@ class NewsModel extends Model
 }
 ```
 
-# Tambahkan Metode `getNews()` ke dalam Model
+## Tambahkan Metode `getNews()` ke dalam Model
 
 Untuk mengambil semua posting dari basis data kita, kita membutuhkan sebuah metode dalam model kita. Untuk melakukan ini, kita akan menggunakan lapisan abstraksi basis data yang disertakan dengan CodeIgniter - Query Builder - yang digunakan dalam kelas CodeIgniter\Model. Hal ini memungkinkan kita untuk menulis 'query' sekali dan membuatnya berfungsi pada semua sistem basis data yang didukung. Kelas Model juga memungkinkan kita untuk dengan mudah bekerja dengan Query Builder dan menyediakan beberapa alat tambahan untuk membuat pengolahan data menjadi lebih sederhana. Tambahkan kode berikut ke dalam model Anda.
 
@@ -390,7 +383,7 @@ Dengan kode ini, Anda dapat melakukan dua kueri yang berbeda. Anda dapat mengamb
 
 Dua metode yang digunakan di sini, yaitu `findAll()` dan `first()`, disediakan oleh kelas CodeIgniter\Model. Mereka sudah tahu tabel mana yang akan digunakan berdasarkan properti $table yang kita atur di kelas NewsModel sebelumnya. Mereka adalah metode pembantu yang menggunakan Query Builder untuk menjalankan perintah mereka pada tabel saat ini, dan mengembalikan sebuah array hasil dalam format pilihan Anda. Dalam contoh ini, `findAll()` mengembalikan sebuah array dari array.
 
-### Menambahkan Routing Rules Ubah file app/Config/Routes.php , sehingga terlihat seperti berikut:
+## Menambahkan Routing Rules Ubah file app/Config/Routes.php , sehingga terlihat seperti berikut:
 ```
 <?php
 
@@ -412,16 +405,16 @@ $routes->get('(:segment)', [Pages::class, 'view']);
 ```
 <img width="769" alt="Screen Shot 2024-03-18 at 13 00 41" src="https://github.com/dellaristasp/08dellarista/assets/134635732/b5677388-a58b-4340-8acb-31ac12db2431">
 
-###  Tambahkan News Controller - Buat controller baru di `app/Controllers/News.php` .
+##  Tambahkan News Controller - Buat controller baru di `app/Controllers/News.php` .
 <img width="843" alt="Screen Shot 2024-03-18 at 13 08 25" src="https://github.com/dellaristasp/08dellarista/assets/134635732/6393f7fc-9fdd-4e5c-a2f2-d42d1ccea6de">
 
-###  Buat tampilan untuk `app/Views/news/index.php`
+##  Buat tampilan untuk `app/Views/news/index.php`
 <img width="814" alt="Screen Shot 2024-03-18 at 13 10 32" src="https://github.com/dellaristasp/08dellarista/assets/134635732/8abb9f59-e9b6-4226-a95b-8aa3a9bbcc74">
 
-### Lengkapi Method `News::show()` pada `app/controllers/News.php`
+## Lengkapi Method `News::show()` pada `app/controllers/News.php`
 <img width="783" alt="Screen Shot 2024-03-18 at 13 11 27" src="https://github.com/dellaristasp/08dellarista/assets/134635732/a570916f-12ee-403f-a4ed-6e098cafa2c7">
 
-### Membuat tampilan terkait di `app/Views/news/view.php`
+## Membuat tampilan terkait di `app/Views/news/view.php`
 <img width="774" alt="Screen Shot 2024-03-18 at 13 12 22" src="https://github.com/dellaristasp/08dellarista/assets/134635732/58c489d0-f9de-45b4-a6f9-ede9d3458c8d">
 
 # Create New Items
@@ -439,5 +432,58 @@ Buat tampilan baru di `app/Views/news/create.php` :
 
 ## 4. News Controller
 Tambahkan `News::new()` pada `app/controllers/News.php` untuk Menampilkan Formulir.
-
 Pertama, buatlah metode untuk menampilkan form HTML yang telah buat.
+<img width="637" alt="Screen Shot 2024-03-18 at 13 38 25" src="https://github.com/dellaristasp/08dellarista/assets/134635732/1fe86773-4282-4c28-997e-442f0e96f01d">
+
+## 5. Tambahkan `News::create()` pada `app/controllers/News.php` untuk Membuat Items Berita
+<img width="747" alt="Screen Shot 2024-03-18 at 13 40 31" src="https://github.com/dellaristasp/08dellarista/assets/134635732/ef1ec8fb-cc8e-4d9a-aadf-e54ce5e3672e">
+
+## 6. Buat tampilan di `app/Views/news/success.php` dan tulis pesan sukses.
+<img width="359" alt="Screen Shot 2024-03-18 at 13 41 36" src="https://github.com/dellaristasp/08dellarista/assets/134635732/5702d7e0-d8ae-4b7e-a9fb-9f194f479108">
+
+## 7. Edit `NewsModel` → `app/Models/NewsModel.php` untuk memberikannya daftar bidang yang dapat diperbarui di `$allowedFields` properti.
+From :
+<img width="552" alt="Screen Shot 2024-03-18 at 13 45 17" src="https://github.com/dellaristasp/08dellarista/assets/134635732/099d669e-16b4-46f4-ba54-98fb156ca797">
+To :
+<img width="830" alt="Screen Shot 2024-03-18 at 13 45 45" src="https://github.com/dellaristasp/08dellarista/assets/134635732/fb3e4b39-c52e-4dfb-bf89-1ab6c45ba211">
+
+## HASILNYA :
+<img width="526" alt="Screen Shot 2024-03-18 at 13 48 02" src="https://github.com/dellaristasp/08dellarista/assets/134635732/1760d3b0-1027-45da-b2f7-98e5fad38d1a">
+
+# CodeIgniter4 Overview
+## AutoLoading
+Namespace pada CodeIgniter 4 adalah cara untuk mengorganisir kelas-kelas, fungsi, dan konstanta ke dalam ruang nama yang terisolasi.
+
+- Memeriksa konfigurasi namespace
+  ```php spark namespaces```
+<img width="843" alt="Screen Shot 2024-03-18 at 13 58 54" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e95fdb31-446f-416e-bce3-37c65ada82b1">
+
+- Terdapat custom Namespace atau membuat `Namespace` baru. Masuk ke `app/Config/autoload.php`
+  ```    public $psr4 = [
+        APP_NAMESPACE => APPPATH, // For custom app namespace
+        'Config'      => APPPATH . 'Config',
+        // Pembahasan CodeIgniter4 poin 3 AutoLoad
+        'MyApp'       => APPPATH . 'MyApp' // Custom Namespace baru
+    ];```
+  <img width="591" alt="Screen Shot 2024-03-18 at 14 00 50" src="https://github.com/dellaristasp/08dellarista/assets/134635732/425b9f81-8fee-4a16-b6e3-7eb16ebfb128">
+
+- Buat Folder `MyApp` pada Folder `app/` dan file `MyClass.php` didalam folder `MyApp`. Isi file `MyClass.php` :
+  ```
+  <?php
+
+namespace App\MyApp;
+
+class MyClass
+{
+    public function sayHello()
+    {
+        echo "Hello from MyClass in MyApp!";
+    }
+}
+```
+<img width="467" alt="Screen Shot 2024-03-18 at 14 03 20" src="https://github.com/dellaristasp/08dellarista/assets/134635732/2f4dcbaa-d4e8-48da-8b37-355df298fc6b">
+
+Lalu cek namespace :
+<img width="847" alt="Screen Shot 2024-03-18 at 14 06 17" src="https://github.com/dellaristasp/08dellarista/assets/134635732/da1137a8-947f-41f7-9377-b2d32c8732d0">
+Telah muncul namespace baru yaitu `MyApp` yang telah kita buat tadi.
+
