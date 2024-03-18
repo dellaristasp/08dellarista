@@ -465,7 +465,6 @@ Namespace pada CodeIgniter 4 adalah cara untuk mengorganisir kelas-kelas, fungsi
         // Pembahasan CodeIgniter4 poin 3 AutoLoad
         'MyApp'       => APPPATH . 'MyApp' // Custom Namespace baru
     ];```
-  <img width="591" alt="Screen Shot 2024-03-18 at 14 00 50" src="https://github.com/dellaristasp/08dellarista/assets/134635732/425b9f81-8fee-4a16-b6e3-7eb16ebfb128">
 
 - Buat Folder `MyApp` pada Folder `app/` dan file `MyClass.php` didalam folder `MyApp`. Isi file `MyClass.php` :
   ```
@@ -481,9 +480,8 @@ class MyClass
     }
 }
 ```
-<img width="467" alt="Screen Shot 2024-03-18 at 14 03 20" src="https://github.com/dellaristasp/08dellarista/assets/134635732/2f4dcbaa-d4e8-48da-8b37-355df298fc6b">
 
-Lalu cek namespace :
-<img width="847" alt="Screen Shot 2024-03-18 at 14 06 17" src="https://github.com/dellaristasp/08dellarista/assets/134635732/da1137a8-947f-41f7-9377-b2d32c8732d0">
+- Lalu cek namespace :
+
 Telah muncul namespace baru yaitu `MyApp` yang telah kita buat tadi.
 
