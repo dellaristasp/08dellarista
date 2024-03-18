@@ -24,12 +24,12 @@ mbstring
 json
 
 # Ekstensi PHP Opsional
-##Ekstensi PHP berikut sebaiknya diaktifkan pada server Anda:
-mysqlnd (jika Anda menggunakan MySQL)
-curl (jika Anda menggunakan CURLRequest)
-imagick (jika Anda menggunakan kelas Image ImageMagickHandler)
-gd (jika Anda menggunakan kelas Image GDHandler)
-simplexml (jika Anda memformat XML)
+##Ekstensi PHP berikut sebaiknya diaktifkan pada server kita:
+mysqlnd (jika kita menggunakan MySQL)
+curl (jika kita menggunakan CURLRequest)
+imagick (jika kita menggunakan kelas Image ImageMagickHandler)
+gd (jika kita menggunakan kelas Image GDHandler)
+simplexml (jika kita memformat XML)
 
 # Kredit
 Kredit
@@ -59,11 +59,11 @@ CodeIgniter awalnya dikembangkan oleh EllisLab. Kerangka kerja ini ditulis untuk
 
 ## Ikhtisar
 
-Tutorial ini akan mengenalkan Anda pada framework CodeIgniter4 dan prinsip dasar arsitektur MVC. Anda akan diajak membangun sebuah aplikasi CodeIgniter dasar langkah demi langkah.
+Tutorial ini akan mengenalkan kita pada framework CodeIgniter4 dan prinsip dasar arsitektur MVC. kita akan diajak membangun sebuah aplikasi CodeIgniter dasar langkah demi langkah.
 
-Jika Anda belum familiar dengan PHP, tidak masalah! Anda dapat memulai dengan mempelajari Tutorial PHP dari W3Schools sebelum melanjutkan.
+Jika kita belum familiar dengan PHP, tidak masalah! kita dapat memulai dengan mempelajari Tutorial PHP dari W3Schools sebelum melanjutkan.
 
-Dalam tutorial ini, Anda akan membuat sebuah aplikasi berita sederhana. Anda akan memulai dengan menulis kode yang dapat memuat halaman statis, kemudian membuat bagian berita yang membaca berita dari database, dan terakhir menambahkan formulir untuk membuat berita baru di database.
+Dalam tutorial ini, kita akan membuat sebuah aplikasi berita sederhana. kita akan memulai dengan menulis kode yang dapat memuat halaman statis, kemudian membuat bagian berita yang membaca berita dari database, dan terakhir menambahkan formulir untuk membuat berita baru di database.
 
 Tutorial ini akan fokus pada hal-hal berikut:
 - Dasar-dasar Model-View-Controller (MVC)
@@ -75,7 +75,7 @@ Tutorial ini akan fokus pada hal-hal berikut:
 
 #### Langkah Pertama: Instalasi CodeIgniter
 
-Anda bisa mengunduh CodeIgniter secara manual, tapi lebih baik menggunakan cara yang direkomendasikan yaitu dengan menginstal paket AppStarter melalui Composer. Cukup ketik perintah berikut di baris perintah:
+kita bisa mengunduh CodeIgniter secara manual, tapi lebih baik menggunakan cara yang direkomendasikan yaitu dengan menginstal paket AppStarter melalui Composer. Cukup ketik perintah berikut di baris perintah:
 
 ```
 composer create-project codeigniter4/appstarter myCI4app
@@ -92,7 +92,7 @@ Secara default, CodeIgniter akan berjalan di mode produksi. Kita akan mengubahny
 
 #### Memulai Server
 
-Anda bisa langsung melihat aplikasi Anda di browser dengan menjalankan server bawaan PHP menggunakan perintah:
+kita bisa langsung melihat aplikasi kita di browser dengan menjalankan server bawaan PHP menggunakan perintah:
 
 ```
 php spark serve
@@ -101,27 +101,27 @@ php spark serve
 
 ### Halaman Selamat Datang
 
-Kunjungi URL berikut di browser Anda:
+Kunjungi URL berikut di browser kita:
 
 [http://localhost:8080](http://localhost:8080)
 
 <img width="878" alt="Screen Shot 2024-03-18 at 09 46 29" src="https://github.com/dellaristasp/08dellarista/assets/134635732/18278084-5ed1-4f31-b161-926446fb0a8e">
 
-Anda akan disambut dengan halaman selamat datang yang menandakan bahwa aplikasi Anda sudah berjalan dengan baik.
+kita akan disambut dengan halaman selamat datang yang menkitakan bahwa aplikasi kita sudah berjalan dengan baik.
 
 # Debugging
 
 ## Debug Toolbar
 
-Saat Anda berada dalam mode pengembangan, Anda akan melihat ikon CodeIgniter di pojok kanan bawah aplikasi Anda. Klik ikon tersebut dan Anda akan melihat toolbar debug.
+Saat kita berada dalam mode pengembangan, kita akan melihat ikon CodeIgniter di pojok kanan bawah aplikasi kita. Klik ikon tersebut dan kita akan melihat toolbar debug.
 
-Toolbar ini berisi beberapa item yang membantu yang dapat Anda gunakan selama pengembangan. Ini tidak akan pernah muncul dalam lingkungan produksi. Mengklik salah satu tab di bagian bawah akan menampilkan informasi tambahan. Mengklik X di sebelah kanan toolbar akan meminimalkannya menjadi kotak kecil dengan ikon CodeIgniter di dalamnya. Jika Anda mengkliknya, toolbar akan muncul kembali.
+Toolbar ini berisi beberapa item yang membantu yang dapat kita gunakan selama pengembangan. Ini tidak akan pernah muncul dalam lingkungan produksi. Mengklik salah satu tab di bagian bawah akan menampilkan informasi tambahan. Mengklik X di sebelah kanan toolbar akan meminimalkannya menjadi kotak kecil dengan ikon CodeIgniter di dalamnya. Jika kita mengkliknya, toolbar akan muncul kembali.
 
 <img width="1457" alt="Screen Shot 2024-03-18 at 10 01 00" src="https://github.com/dellaristasp/08dellarista/assets/134635732/271d5b9e-c9f1-4266-93fd-6cf1b981b1f5">
 
 ## Error Pages
 
-Selain itu, CodeIgniter memiliki beberapa halaman kesalahan yang membantu saat Anda menemui pengecualian atau kesalahan lain dalam program Anda. Buka file app/Controllers/Home.php dan ubah beberapa baris untuk membuat kesalahan (menghapus titik koma atau kurung kurawal harus cukup!). Anda akan melihat tampilan seperti ini:
+Selain itu, CodeIgniter memiliki beberapa halaman kesalahan yang membantu saat kita menemui pengecualian atau kesalahan lain dalam program kita. Buka file app/Controllers/Home.php dan ubah beberapa baris untuk membuat kesalahan (menghapus titik koma atau kurung kurawal harus cukup!). kita akan melihat tampilan seperti ini:
 
 <img width="1451" alt="Screen Shot 2024-03-18 at 10 04 45" src="https://github.com/dellaristasp/08dellarista/assets/134635732/f7137737-f308-4c64-8502-3a3364b2812f">
 
@@ -169,9 +169,13 @@ Di sini, aturan kedua dalam objek `$routes` cocok dengan permintaan GET ke jalur
 
 Aturan ketiga dalam objek `$routes` cocok dengan permintaan GET ke segmen URI menggunakan placeholder (:segment), dan meneruskan parameter ke metode view() dari kelas Pages.
 
-# Membuat Controller Halaman
+# Membangun Aplikasi Pertama kita
 
-Buatlah sebuah file di `app/Controllers/Pages.php` dengan kode berikut.
+**Static Page**
+
+**Controller Page:**
+
+Di dalam direktori app/Controllers, kita akan menemukan file Pages.php yang berisi kode sebagai berikut:
 
 ```php
 <?php
@@ -191,42 +195,124 @@ class Pages extends BaseController
     }
 }
 ```
-<img width="931" alt="Screen Shot 2024-03-18 at 10 35 00" src="https://github.com/dellaristasp/08dellarista/assets/134635732/c8806f2c-ced3-4d5b-b3cf-c21d7442bdb1">
+<img width="553" alt="Screen Shot 2024-03-18 at 11 05 56" src="https://github.com/dellaristasp/08dellarista/assets/134635732/8262e635-ac0b-4c6f-b236-32292bf8f476">
 
-Anda telah membuat sebuah kelas bernama Pages, dengan sebuah metode view() yang menerima satu argumen bernama $page. Ini juga memiliki metode index(), sama seperti controller default yang ditemukan di `app/Controllers/Home.php`; metode tersebut menampilkan halaman selamat datang CodeIgniter.
+Buka file rute yang terletak di app/Config/Routes.php.
 
-Kelas Pages memperluas kelas BaseController yang memperluas kelas CodeIgniter\Controller. Ini berarti bahwa kelas Pages yang baru dapat mengakses metode-metode dan properti-properti yang didefinisikan dalam kelas CodeIgniter\Controller (system/Controller.php).
+Tambahkan baris berikut untuk menghubungkan dengan Pages.php di Controllers.
 
-Controller adalah yang akan menjadi pusat setiap permintaan ke aplikasi web Anda. Seperti kelas PHP lainnya, Anda merujuknya dalam controller Anda sebagai $this.
+```php
+use App\Controllers\Pages;
 
-# Membuat Tampilan
+$routes->get('pages', [Pages::class, 'index']);
+$routes->get('(:segment)', [Pages::class, 'view']);
+```
+<img width="676" alt="Screen Shot 2024-03-18 at 11 06 35" src="https://github.com/dellaristasp/08dellarista/assets/134635732/225e13b1-556f-450c-bf24-cb3c05ef0dde">
 
-Sekarang setelah Anda telah membuat metode pertama Anda, saatnya untuk membuat beberapa template halaman dasar. Kita akan membuat dua "tampilan" (template halaman) yang bertindak sebagai header dan footer halaman kita.
+**Tampilan**
 
-Buat header di `app/Views/templates/header.php` dan tambahkan kode berikut:
+Di dalam folder baru bernama templates, kita akan menemukan file header.php di dalam folder app/Views.
+
+Isi kode pada header.php:
 
 ```html
 <!doctype html>
 <html>
 <head>
-    <title>Panduan CodeIgniter</title>
+    <title>CodeIgniter Tutorial</title>
 </head>
 <body>
-
 ```
-<img width="844" alt="Screen Shot 2024-03-18 at 10 41 25" src="https://github.com/dellaristasp/08dellarista/assets/134635732/675b275d-f880-4069-bb9b-8ba0ba8f0e16">
-<img width="209" alt="Screen Shot 2024-03-18 at 10 50 47" src="https://github.com/dellaristasp/08dellarista/assets/134635732/014e69e8-1a4f-48c2-a889-c02318ce8a42">
+<img width="695" alt="Screen Shot 2024-03-18 at 11 31 29" src="https://github.com/dellaristasp/08dellarista/assets/134635732/cd4702e6-b00d-4f0f-9665-bc6e0d98fcc0">
 
-
-Header ini berisi kode HTML dasar yang ingin Anda tampilkan sebelum memuat tampilan utama, bersama dengan sebuah judul. Ini juga akan menampilkan variabel $title, yang akan kita definisikan nanti di dalam controller. Sekarang, buat footer di `app/Views/templates/footer.php` yang berisi kode berikut:
+Terdapat footer di app/Views/templates/footer.php
 
 ```html
-    <em>&copy; 2022</em>
+<footer>ini footer</footer>
+<em>&copy; 2024</em>
 </body>
 </html>
 ```
-<img width="504" alt="Screen Shot 2024-03-18 at 10 54 23" src="https://github.com/dellaristasp/08dellarista/assets/134635732/d798902a-8cc6-467c-953f-1f72eb079961">
+<img width="298" alt="Screen Shot 2024-03-18 at 11 32 16" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e15042ab-f5cc-4c57-aa78-87c004ee8188">
 
-Footer ini akan menampilkan hak cipta tahun 2022 di bagian bawah halaman :
-<img width="940" alt="Screen Shot 2024-03-18 at 10 52 53" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e9261841-3c83-4a86-b17d-b494814d172f">
+**Menambahkan Logika ke Kontroler**
+
+Di dalam folder pages di app/Views/, kita akan menemukan dua file bernama home.php dan about.php di dalam app/Views/pages/.
+
+**home.php:**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Selamat Datang di Halaman Utama</h1>
+</body>
+</html>
+```
+<img width="625" alt="Screen Shot 2024-03-18 at 11 18 35" src="https://github.com/dellaristasp/08dellarista/assets/134635732/14fb44a4-c9e3-4ad4-9e8b-015741cb24f2">
+
+**about.php:**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Halaman Ini</title>
+</head>
+<body>
+    <h1>Tentang Saya</h1>
+    <p>Ini adalah halaman tentang situs web.</p>
+</body>
+</html>
+```
+<img width="525" alt="Screen Shot 2024-03-18 at 11 19 20" src="https://github.com/dellaristasp/08dellarista/assets/134635732/63ce1b85-66c3-4514-8fa0-c13b7176c50a">
+
+Di dalam file app/controllers/Pages.php:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use CodeIgniter\Exceptions\PageNotFoundException; // Untuk mengimpor kelas PageNotFoundException
+
+class Pages extends BaseController
+{
+    public function index()
+    {
+        // Menampilkan halaman utama (welcome_message.php)
+        return view('welcome_message');
+    }
+
+    public function view($page = 'home')
+    {
+        // Mengecek apakah halaman yang diminta ada
+        if (!is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
+            // Jika tidak ada, lempar PageNotFoundException
+            throw new PageNotFoundException($page);
+        }
+
+        // Mengatur judul halaman berdasarkan nama halaman
+        $data['title'] = ucfirst($page); // Kapitalkan huruf pertama
+
+        // Memuat template header, halaman statis (home, about), dan footer
+        return view('templates/header', $data)
+            . view('pages/' . $page, $data)
+            . view('templates/footer');
+    }
+}
+```
+<img width="1213" alt="Screen Shot 2024-03-18 at 11 21 26" src="https://github.com/dellaristasp/08dellarista/assets/134635732/5eceb704-3a1a-485a-9f64-108701664563">
+
+Buka URL: http://localhost:8080/home,
+kita akan melihat tampilan yang terhubung ke Kontroler Pages.php (metode public function view($page = 'home')) yang diarahkan pada file Route.php. Seperti : 
+<img width="1465" alt="Screen Shot 2024-03-18 at 11 35 43" src="https://github.com/dellaristasp/08dellarista/assets/134635732/95781832-df96-436e-873a-261ed24b8c5d">
+<img width="846" alt="Screen Shot 2024-03-18 at 11 36 31" src="https://github.com/dellaristasp/08dellarista/assets/134635732/98dceacc-0b2d-43fa-ad85-beac96f0d4a0">
 
