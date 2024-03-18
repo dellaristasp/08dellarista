@@ -316,3 +316,128 @@ kita akan melihat tampilan yang terhubung ke Kontroler Pages.php (metode public 
 <img width="1465" alt="Screen Shot 2024-03-18 at 11 35 43" src="https://github.com/dellaristasp/08dellarista/assets/134635732/95781832-df96-436e-873a-261ed24b8c5d">
 <img width="846" alt="Screen Shot 2024-03-18 at 11 36 31" src="https://github.com/dellaristasp/08dellarista/assets/134635732/98dceacc-0b2d-43fa-ad85-beac96f0d4a0">
 
+# News Section
+Buat Database dengan nama ci4
+
+Buat tabel :
+```
+CREATE TABLE news (
+    id INT AUTO_INCREMENT,
+    title VARCHAR(128) NOT NULL,
+    description VARCHAR(128) NOT NULL,
+    body TEXT NOT NULL,
+    PRIMARY KEY (id)
+);
+```
+```
+INSERT INTO news (title, description, body) VALUES
+('Peluncuran Novel Terbaru', 'Novel fiksi dari penulis muda', 'Sebuah novel fiksi terbaru yang ditulis oleh penulis muda akan diluncurkan minggu depan di sebuah acara khusus di toko buku lokal.'),
+('Wawancara dengan Pemenang Hadiah Sastra', 'Penulis menerima penghargaan prestisius', 'Kami akan mewawancarai pemenang hadiah sastra terkemuka minggu depan untuk mendiskusikan karyanya dan pengaruhnya pada dunia sastra.'),
+('Rilis Film Dokumenter Terbaru', 'Dokumenter tentang lingkungan hidup', 'Film dokumenter terbaru yang menyoroti isu-isu lingkungan hidup akan dirilis secara online minggu depan. Film ini telah mendapatkan banyak perhatian sejak trailer pertamanya dirilis.');
+```
+Maka tampilannya akan menjadi seperti ini di database : 
+<img width="1131" alt="Screen Shot 2024-03-18 at 11 49 47" src="https://github.com/dellaristasp/08dellarista/assets/134635732/13413fdc-382f-4409-a629-15d7d6f442af">
+
+Hubungkan ke Database pada file .env hilangkan comment (#) dan ganti database
+
+```
+#--------------------------------------------------------------------
+# DATABASE
+#--------------------------------------------------------------------
+
+database.default.hostname = localhost
+database.default.database = ci4
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.DBPrefix =
+database.default.port = 3306
+```
+<img width="567" alt="Screen Shot 2024-03-18 at 11 54 24" src="https://github.com/dellaristasp/08dellarista/assets/134635732/aab4b6f1-2f85-459f-99f7-5ed1471d2dc8">
+
+Buat Model News Buka direktori app/Models dan buat file baru bernama NewsModel.php dan tambahkan kode berikut
+
+```
+<?php
+
+namespace App\Models;
+
+use CodeIgniter\Model;
+
+class NewsModel extends Model
+{
+    protected $table = 'news';
+}
+```
+
+# Tambahkan Metode `getNews()` ke dalam Model
+
+Untuk mengambil semua posting dari basis data kita, kita membutuhkan sebuah metode dalam model kita. Untuk melakukan ini, kita akan menggunakan lapisan abstraksi basis data yang disertakan dengan CodeIgniter - Query Builder - yang digunakan dalam kelas CodeIgniter\Model. Hal ini memungkinkan kita untuk menulis 'query' sekali dan membuatnya berfungsi pada semua sistem basis data yang didukung. Kelas Model juga memungkinkan kita untuk dengan mudah bekerja dengan Query Builder dan menyediakan beberapa alat tambahan untuk membuat pengolahan data menjadi lebih sederhana. Tambahkan kode berikut ke dalam model Anda.
+
+```php
+public function getNews($slug = false)
+{
+    if ($slug === false) {
+        return $this->findAll();
+    }
+
+    return $this->where(['slug' => $slug])->first();
+}
+```
+<img width="789" alt="Screen Shot 2024-03-18 at 12 57 19" src="https://github.com/dellaristasp/08dellarista/assets/134635732/cd5d8fd7-5578-4448-adb5-e89990cf7ae8">
+
+Dengan kode ini, Anda dapat melakukan dua kueri yang berbeda. Anda dapat mengambil semua catatan berita, atau mendapatkan sebuah item berita berdasarkan slug-nya. Anda mungkin telah memperhatikan bahwa variabel $slug tidak di-escape sebelum menjalankan kueri; Query Builder akan melakukan ini untuk Anda.
+
+Dua metode yang digunakan di sini, yaitu `findAll()` dan `first()`, disediakan oleh kelas CodeIgniter\Model. Mereka sudah tahu tabel mana yang akan digunakan berdasarkan properti $table yang kita atur di kelas NewsModel sebelumnya. Mereka adalah metode pembantu yang menggunakan Query Builder untuk menjalankan perintah mereka pada tabel saat ini, dan mengembalikan sebuah array hasil dalam format pilihan Anda. Dalam contoh ini, `findAll()` mengembalikan sebuah array dari array.
+
+### Menambahkan Routing Rules Ubah file app/Config/Routes.php , sehingga terlihat seperti berikut:
+```
+<?php
+
+use CodeIgniter\Router\RouteCollection;
+
+/**
+ * @var RouteCollection $routes
+ */
+$routes->get('/', 'Home::index');
+
+use App\Controllers\Pages;
+use App\Controllers\News; // Tambah baris ini
+
+$routes->get('news', [News::class, 'index']);           // Tambah baris ini
+$routes->get('news/(:segment)', [News::class, 'show']); // Tambah baris ini
+
+$routes->get('pages', [Pages::class, 'index']);
+$routes->get('(:segment)', [Pages::class, 'view']);
+```
+<img width="769" alt="Screen Shot 2024-03-18 at 13 00 41" src="https://github.com/dellaristasp/08dellarista/assets/134635732/b5677388-a58b-4340-8acb-31ac12db2431">
+
+###  Tambahkan News Controller - Buat controller baru di `app/Controllers/News.php` .
+<img width="843" alt="Screen Shot 2024-03-18 at 13 08 25" src="https://github.com/dellaristasp/08dellarista/assets/134635732/6393f7fc-9fdd-4e5c-a2f2-d42d1ccea6de">
+
+###  Buat tampilan untuk `app/Views/news/index.php`
+<img width="814" alt="Screen Shot 2024-03-18 at 13 10 32" src="https://github.com/dellaristasp/08dellarista/assets/134635732/8abb9f59-e9b6-4226-a95b-8aa3a9bbcc74">
+
+### Lengkapi Method `News::show()` pada `app/controllers/News.php`
+<img width="783" alt="Screen Shot 2024-03-18 at 13 11 27" src="https://github.com/dellaristasp/08dellarista/assets/134635732/a570916f-12ee-403f-a4ed-6e098cafa2c7">
+
+### Membuat tampilan terkait di `app/Views/news/view.php`
+<img width="774" alt="Screen Shot 2024-03-18 at 13 12 22" src="https://github.com/dellaristasp/08dellarista/assets/134635732/58c489d0-f9de-45b4-a6f9-ede9d3458c8d">
+
+# Create New Items
+## 1. Aktifkan Filter CSRF
+Buka file `app/Config/Filters.php` dan perbarui $methods properti seperti berikut:
+<img width="552" alt="Screen Shot 2024-03-18 at 13 16 53" src="https://github.com/dellaristasp/08dellarista/assets/134635732/d953a758-225d-41bd-a3e5-f0d29edbebc7">
+
+## 2. Menambahkan Routing Rules
+Menambahkan rule tambahan ke file `app/Config/Routes.php` .
+<img width="737" alt="Screen Shot 2024-03-18 at 13 18 03" src="https://github.com/dellaristasp/08dellarista/assets/134635732/fc8254f6-ff83-40db-bc12-4dbd62ee888e">
+
+## 3. Membuat form
+Buat tampilan baru di `app/Views/news/create.php` :
+<img width="828" alt="Screen Shot 2024-03-18 at 13 19 06" src="https://github.com/dellaristasp/08dellarista/assets/134635732/80b979fb-d3cd-451e-8e06-6f4bd1404fba">
+
+## 4. News Controller
+Tambahkan `News::new()` pada `app/controllers/News.php` untuk Menampilkan Formulir.
+
+Pertama, buatlah metode untuk menampilkan form HTML yang telah buat.
