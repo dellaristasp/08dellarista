@@ -1,13 +1,14 @@
 # Della Rista Setiawan Putri_220102080
 
-# Apa itu FrameWork?
+# 1. PENDAHULUAN TENTANG FRAMEWORK & CODE IGNITER
+## Apa itu FrameWork?
 Framework adalah sebuah kerangka kerja yang digunakan untuk membantu developer dalam mengembangkan kode aplikasi secara konsisten.
 
-# Apa itu CodeIgniter?
+## Apa itu CodeIgniter?
 Codeigniter adalah salah satu framework untuk membuat website dengan bahasa pemrograman PHP.
 Codeigniter terkenal dengan konsep MVC-nya. MVC merupakan singkatan dari Model–View–Controller.
 
-# Keunggulan CodeIgniter:
+## Keunggulan CodeIgniter:
 1. **Ringan dan Cepat**: Framework dengan ukuran kecil dan performa tinggi.
 2. **Konfigurasi Minimal**: Membutuhkan sedikit konfigurasi untuk memulai.
 3. **Tanpa Penggunaan Command Line**: Tidak memerlukan penggunaan baris perintah.
@@ -16,8 +17,8 @@ Codeigniter terkenal dengan konsep MVC-nya. MVC merupakan singkatan dari Model�
 6. **Solusi yang Sederhana**: Menolak kompleksitas untuk pengembangan yang mudah dipahami.
 7. **Dokumentasi Lengkap**: Didukung oleh dokumentasi yang jelas dan komprehensif.
 
-# Persyaratan Server
-## PHP dan Ekstensi yang Dibutuhkan
+## Persyaratan Server
+### PHP dan Ekstensi yang Dibutuhkan
 PHP versi 7.4 atau lebih baru diperlukan, dengan ekstensi PHP berikut diaktifkan:
 intl
 mbstring
