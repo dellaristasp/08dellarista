@@ -490,14 +490,18 @@ Telah muncul namespace baru yaitu `MyApp` yang telah kita buat tadi.
 # Factories
 Factories atau Pabrik adalah alat yang memungkinkan pengguna membuat objek atau instance dari kelas-kelas tertentu secara dinamis.
 - Command Line untuk menghapus file cache
-```php spark cache:clear```
+```
+php spark cache:clear
+```
 <img width="612" alt="Screen Shot 2024-03-18 at 14 15 11" src="https://github.com/dellaristasp/08dellarista/assets/134635732/38172cac-1fd6-4487-b309-55b4ea5d3456">
-- Cara Mengaktifkan Konfigurasi Caching Batalkan komentar pada kode berikut di `public/index.php` :
+
+## - Cara Mengaktifkan Konfigurasi Caching Batalkan komentar pada kode berikut di `public/index.php` : ##
+
 <img width="670" alt="Screen Shot 2024-03-18 at 14 17 25" src="https://github.com/dellaristasp/08dellarista/assets/134635732/53780b66-4546-4fba-966f-e0e6aa0aef82">
 To :
+
 ```
 <?php
-
 // Check PHP version.
 $minPhpVersion = '7.4'; // If you update this, don't forget to update `spark`.
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
@@ -509,7 +513,8 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 
     exit($message);
 }
-
+```
+```
 // Path to the front controller (this file)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 
@@ -526,7 +531,8 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
  * our autoloader, along with Composer's, loads our constants
  * and fires up an environment-specific bootstrapping.
  */
-
+```
+```
 // Load our paths config file
 // This is the line that might need to be changed, depending on your folder structure.
 require FCPATH . '../app/Config/Paths.php';
@@ -545,7 +551,8 @@ require_once SYSTEMPATH . 'Config/DotEnv.php';
 if (!defined('ENVIRONMENT')) {
     define('ENVIRONMENT', env('CI_ENVIRONMENT', 'development'));
 }
-
+```
+```
 // Pembahasan CodeIgniter4 Overview Poin Factories
 // Load Config Cache
 $factoriesCache = new \CodeIgniter\Cache\FactoriesCache();
@@ -567,7 +574,8 @@ $app = Config\Services::codeigniter();
 $app->initialize();
 $context = is_cli() ? 'php-cli' : 'web';
 $app->setContext($context);
-
+```
+```
 /*
  *---------------------------------------------------------------
  * LAUNCH THE APPLICATION
@@ -629,10 +637,12 @@ $routes->get('pages', [Pages::class, 'index']);
 // Route untuk menampilkan halaman Pages sesuai deskripsinya
 $routes->get('(:segment)', [Pages::class, 'view']);
 ```
-- Contoh Basic Routing
-- `app/Config/Routes/php`
+## Contoh Basic Routing
+### `app/Config/Routes/php`
+
   <img width="624" alt="Screen Shot 2024-03-18 at 14 24 18" src="https://github.com/dellaristasp/08dellarista/assets/134635732/75ab34b9-be78-4401-a139-210f02dc0ebb">
-Menuju ke `app/controllers/News.php`
+  
+### Menuju ke `app/controllers/News.php`
 
 # Working with HTTP Requests
 ## Apa itu HTTP?
