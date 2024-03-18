@@ -25,11 +25,11 @@ json
 
 # Ekstensi PHP Opsional
 ## Ekstensi PHP berikut sebaiknya diaktifkan pada server kita:
-mysqlnd (jika kita menggunakan MySQL)
-curl (jika kita menggunakan CURLRequest)
-imagick (jika kita menggunakan kelas Image ImageMagickHandler)
-gd (jika kita menggunakan kelas Image GDHandler)
-simplexml (jika kita memformat XML)
+#### mysqlnd (jika kita menggunakan MySQL)
+#### curl (jika kita menggunakan CURLRequest)
+#### imagick (jika kita menggunakan kelas Image ImageMagickHandler)
+#### gd (jika kita menggunakan kelas Image GDHandler)
+#### simplexml (jika kita memformat XML)
 
 # Kredit
 Kredit
@@ -64,10 +64,10 @@ Jika kita belum familiar dengan PHP, tidak masalah! kita dapat memulai dengan me
 Dalam tutorial ini, kita akan membuat sebuah aplikasi berita sederhana. kita akan memulai dengan menulis kode yang dapat memuat halaman statis, kemudian membuat bagian berita yang membaca berita dari database, dan terakhir menambahkan formulir untuk membuat berita baru di database.
 
 Tutorial ini akan fokus pada hal-hal berikut:
-- Dasar-dasar Model-View-Controller (MVC)
-- Dasar-dasar routing
-- Validasi formulir
-- Melakukan kueri dasar ke database menggunakan Model CodeIgniter
+#### Dasar-dasar Model-View-Controller (MVC)
+#### Dasar-dasar routing
+#### Validasi formulir
+#### Melakukan kueri dasar ke database menggunakan Model CodeIgniter
 
 ## Langkah Pertama: Instalasi CodeIgniter
 
@@ -121,11 +121,9 @@ Selain itu, CodeIgniter memiliki beberapa halaman kesalahan yang membantu saat k
 
 <img width="1451" alt="Screen Shot 2024-03-18 at 10 04 45" src="https://github.com/dellaristasp/08dellarista/assets/134635732/f7137737-f308-4c64-8502-3a3364b2812f">
 
-
 Ada beberapa hal yang perlu diperhatikan di sini:
-
-- Saat mengarahkan kursor ke header merah di bagian atas, akan muncul tautan pencarian yang membuka DuckDuckGo.com di tab baru dan mencari pengecualian.
-- Mengklik tautan argumen pada setiap baris di Backtrace akan memperluas daftar argumen yang diteruskan ke panggilan fungsi tersebut.
+**Saat mengarahkan kursor ke header merah di bagian atas, akan muncul tautan pencarian yang membuka DuckDuckGo.com di tab baru dan mencari pengecualian.**
+**Mengklik tautan argumen pada setiap baris di Backtrace akan memperluas daftar argumen yang diteruskan ke panggilan fungsi tersebut.**
 
 ## Menetapkan Aturan Routing
 
