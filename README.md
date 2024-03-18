@@ -459,15 +459,17 @@ Namespace pada CodeIgniter 4 adalah cara untuk mengorganisir kelas-kelas, fungsi
 <img width="843" alt="Screen Shot 2024-03-18 at 13 58 54" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e95fdb31-446f-416e-bce3-37c65ada82b1">
 
 - Terdapat custom Namespace atau membuat `Namespace` baru. Masuk ke `app/Config/autoload.php`
-  ```    public $psr4 = [
-        APP_NAMESPACE => APPPATH, // For custom app namespace
-        'Config'      => APPPATH . 'Config',
-        // Pembahasan CodeIgniter4 poin 3 AutoLoad
-        'MyApp'       => APPPATH . 'MyApp' // Custom Namespace baru
-    ];```
+  ```
+  public $psr4 = [
+  APP_NAMESPACE => APPPATH, // For custom app namespace
+  'Config'      => APPPATH . 'Config',
+  // Pembahasan CodeIgniter4 poin 3 AutoLoad
+  'MyApp'       => APPPATH . 'MyApp' // Custom Namespace baru
+    ];
+  ```
 
 - Buat Folder `MyApp` pada Folder `app/` dan file `MyClass.php` didalam folder `MyApp`. Isi file `MyClass.php` :
-  ```
+```
   <?php
 
 namespace App\MyApp;
@@ -482,6 +484,163 @@ class MyClass
 ```
 
 - Lalu cek namespace :
-
+<img width="844" alt="Screen Shot 2024-03-18 at 14 08 44" src="https://github.com/dellaristasp/08dellarista/assets/134635732/e5b644a9-7600-4d2c-ad49-b2e3982f42c1">
 Telah muncul namespace baru yaitu `MyApp` yang telah kita buat tadi.
 
+# Factories
+Factories atau Pabrik adalah alat yang memungkinkan pengguna membuat objek atau instance dari kelas-kelas tertentu secara dinamis.
+- Command Line untuk menghapus file cache
+```php spark cache:clear```
+<img width="612" alt="Screen Shot 2024-03-18 at 14 15 11" src="https://github.com/dellaristasp/08dellarista/assets/134635732/38172cac-1fd6-4487-b309-55b4ea5d3456">
+- Cara Mengaktifkan Konfigurasi Caching Batalkan komentar pada kode berikut di `public/index.php` :
+<img width="670" alt="Screen Shot 2024-03-18 at 14 17 25" src="https://github.com/dellaristasp/08dellarista/assets/134635732/53780b66-4546-4fba-966f-e0e6aa0aef82">
+To :
+```
+<?php
+
+// Check PHP version.
+$minPhpVersion = '7.4'; // If you update this, don't forget to update `spark`.
+if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
+    $message = sprintf(
+        'Your PHP version must be %s or higher to run CodeIgniter. Current version: %s',
+        $minPhpVersion,
+        PHP_VERSION
+    );
+
+    exit($message);
+}
+
+// Path to the front controller (this file)
+define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
+
+// Ensure the current directory is pointing to the front controller's directory
+if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
+    chdir(FCPATH);
+}
+
+/*
+ *---------------------------------------------------------------
+ * BOOTSTRAP THE APPLICATION
+ *---------------------------------------------------------------
+ * This process sets up the path constants, loads and registers
+ * our autoloader, along with Composer's, loads our constants
+ * and fires up an environment-specific bootstrapping.
+ */
+
+// Load our paths config file
+// This is the line that might need to be changed, depending on your folder structure.
+require FCPATH . '../app/Config/Paths.php';
+// ^^^ Change this line if you move your application folder
+
+$paths = new Config\Paths();
+
+// Location of the framework bootstrap file.
+require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
+
+// Load environment settings from .env files into $_SERVER and $_ENV
+require_once SYSTEMPATH . 'Config/DotEnv.php';
+(new CodeIgniter\Config\DotEnv(ROOTPATH))->load();
+
+// Define ENVIRONMENT
+if (!defined('ENVIRONMENT')) {
+    define('ENVIRONMENT', env('CI_ENVIRONMENT', 'development'));
+}
+
+// Pembahasan CodeIgniter4 Overview Poin Factories
+// Load Config Cache
+$factoriesCache = new \CodeIgniter\Cache\FactoriesCache();
+$factoriesCache->load('config');
+// ^^^ Uncomment these lines if you want to use Config Caching.
+// ...
+
+/*
+ * ---------------------------------------------------------------
+ * GRAB OUR CODEIGNITER INSTANCE
+ * ---------------------------------------------------------------
+ *
+ * The CodeIgniter class contains the core functionality to make
+ * the application run, and does all the dirty work to get
+ * the pieces all working together.
+ */
+
+$app = Config\Services::codeigniter();
+$app->initialize();
+$context = is_cli() ? 'php-cli' : 'web';
+$app->setContext($context);
+
+/*
+ *---------------------------------------------------------------
+ * LAUNCH THE APPLICATION
+ *---------------------------------------------------------------
+ * Now that everything is set up, it's time to actually fire
+ * up the engines and make this app do its thang.
+ */
+
+$app->run();
+
+// Pembahasan CodeIgniter4 Overview Poin Factories
+// Save Config Cache
+$factoriesCache->save('config');
+// ^^^ Uncomment this line if you want to use Config Caching.
+// ...
+
+// Exits the application, setting the exit code for CLI-based applications
+// that might be watching.
+exit(EXIT_SUCCESS);
+```
+
+# Controllers
+<img width="483" alt="Screen Shot 2024-03-18 at 14 26 28" src="https://github.com/dellaristasp/08dellarista/assets/134635732/a61160c1-2252-4f82-a986-e431273b7fff">
+Misalnya, dalam file `Controllers News.php`, saya berada pada kelas News yang terhubung dengan rute `$routes->get('news', [News::class, 'index']);` dalam file `Route.php`. Di dalam metode `index()` dari kelas ini, perintah `return view('news/index')` terhubung dengan folder templates yang terdapat di dalam direktori Views untuk menampilkan header dan footer. Ini merujuk pada pemanggilan file `index.php`.
+
+#  URI Routing
+Pada file `app/Config/Routes.php` terdapat route yang akan dijalankan atau ditetapkan, diantaranya :
+```
+<?php
+// Route untuk halaman Home
+$routes->get('/', 'Home::index');
+// Route untuk menampilkan form upload saat kita menautkan /upload pada URL dan proses upload file dari Controller Upload, method=index
+$routes->get('upload', 'Upload::index');
+$routes->post('upload/upload', 'Upload::upload');
+
+// Route untuk menampilkan form dan proses form (Post data)
+$routes->get('form', 'Form::index');
+$routes->post('form', 'Form::index');
+
+// Route untuk halaman News
+use App\Controllers\News;
+
+// Route untuk menampilkan daftar News (index)
+$routes->get('news', [News::class, 'index']); // Tambah baris ini
+
+// Route untuk menampilkan form create News
+$routes->get('news/new', [News::class, 'new']); // Tambah baris ini (poin create News items)
+// Route untuk memproses form create News dan menyimpan di database
+$routes->post('news', [News::class, 'create']); // Tambah baris ini (poin create News items)
+
+// Route untuk menampilkan detail suatu News berdasarkan Deskripsinya
+$routes->get('news/(:segment)', [News::class, 'show']); // Tambah baris ini
+
+// Route untuk halaman Pages
+use App\Controllers\Pages;
+
+// Route untuk menampilkan daftar Pages (index)
+$routes->get('pages', [Pages::class, 'index']);
+// Route untuk menampilkan halaman Pages sesuai deskripsinya
+$routes->get('(:segment)', [Pages::class, 'view']);
+```
+- Contoh Basic Routing
+- `app/Config/Routes/php`
+  <img width="624" alt="Screen Shot 2024-03-18 at 14 24 18" src="https://github.com/dellaristasp/08dellarista/assets/134635732/75ab34b9-be78-4401-a139-210f02dc0ebb">
+Menuju ke `app/controllers/News.php`
+
+# Working with HTTP Requests
+## Apa itu HTTP?
+HTTP adalah singkatan dari HyperText Transfer Protocol, yang merupakan protokol yang digunakan untuk pertukaran data di web.
+- Request Contoh pada Browser : Blok terlebih dahulu misal teks, lalu tekan shorcut CTRL + SHIFT + I pilih tab Network → Refresh Halaman → Pilih request yang ada.
+```
+GET / HTTP/1.1
+Host codeigniter.com
+Accept: text/html
+User-Agent: Chrome/46.0.2490.80
+```
