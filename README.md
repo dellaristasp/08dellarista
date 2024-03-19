@@ -644,6 +644,19 @@ $routes->get('(:segment)', [Pages::class, 'view']);
   
 ### Menuju ke `app/controllers/News.php`
 
+# 14. ENVIRONMENT
+Dalam CodeIgniter (CI), `.env` adalah file konfigurasi yang digunakan untuk menyimpan variabel lingkungan seperti pengaturan database, kunci enkripsi, dan pengaturan keamanan lainnya. Ini memungkinkan pengembang untuk dengan mudah mengelola pengaturan aplikasi tanpa harus mengubah kode sumber langsung. File `.env` biasanya berisi pasangan "kunci-nilai" yang merepresentasikan pengaturan aplikasi, dan dapat diakses melalui kode menggunakan library atau helper tertentu. Dengan menggunakan file `.env`, pengembang dapat memisahkan konfigurasi dari kode aplikasi, yang membuatnya lebih fleksibel dan mudah diatur untuk berbagai lingkungan, seperti pengembangan, uji, dan produksi.
+Dalam hal ini, kita akan mengaktifkan file env menjadi development. Caranya adalah :
+1. Copy file env default, lalu ubah namanya menjasdi `.env` :
+<img width="111" alt="Screen Shot 2024-03-19 at 08 11 16" src="https://github.com/dellaristasp/08dellarista/assets/134635732/d99a8526-1253-450e-9e84-b79becfc135b">
+2. Matikan tanda pagarnya, lalu ubah environmentnya dari production :
+<img width="264" alt="Screen Shot 2024-03-19 at 08 12 05" src="https://github.com/dellaristasp/08dellarista/assets/134635732/eb7a203c-3eee-4cb4-a0f7-db3c65a62aa2">
+Menjadi development :
+<img width="299" alt="Screen Shot 2024-03-19 at 08 13 20" src="https://github.com/dellaristasp/08dellarista/assets/134635732/561387be-ea9d-4dd8-abe7-d04716b9068a">
+Maka tampilannya akan menjadi seperti ini :
+<img width="823" alt="Screen Shot 2024-03-19 at 08 15 23" src="https://github.com/dellaristasp/08dellarista/assets/134635732/357c6885-5cf7-4272-810e-f789b2deb618">
+3. Lalu ganti bagian app.base urlnya menjadi :
+   <img width="335" alt="Screen Shot 2024-03-19 at 08 22 59" src="https://github.com/dellaristasp/08dellarista/assets/134635732/bcb16fe4-e771-492a-9373-778c663c0b5f">
+Maka env anda sudah berhasil diubah menjadi development mode, yg mana ketika nanti ada kesalahan anda bisa tahu.
 
-User-Agent: Chrome/46.0.2490.80
-```
+
