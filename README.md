@@ -658,5 +658,48 @@ Maka tampilannya akan menjadi seperti ini :
 3. Lalu ganti bagian app.base urlnya menjadi :
    <img width="335" alt="Screen Shot 2024-03-19 at 08 22 59" src="https://github.com/dellaristasp/08dellarista/assets/134635732/bcb16fe4-e771-492a-9373-778c663c0b5f">
 Maka env anda sudah berhasil diubah menjadi development mode, yg mana ketika nanti ada kesalahan anda bisa tahu.
+<img width="763" alt="Screen Shot 2024-03-19 at 08 32 12" src="https://github.com/dellaristasp/08dellarista/assets/134635732/d2e6f8cf-5d5e-450c-9247-74426c9ac686">
+
+# 15. ROUTES 
+## Routes
+Routes akan menentukan controller mana yang akan dijalankan. Baru nanti kemudian controller yang akan menentukan, apakah dia akan menampilkan view, atau mengambil data dari model. Jadi routes adalah komponen pertama yang akan diakses.
+Settingan defaultnya :
+<img width="296" alt="Screen Shot 2024-03-19 at 08 33 37" src="https://github.com/dellaristasp/08dellarista/assets/134635732/d1930ac0-79d2-4bb3-9579-ebf39df568ab">
+Yang artinya, jika ada yang mengakses route, maka dia akan diarahkan ke controller home dan methodnya index. Nah filenya berada di `app\Controllers.` Nah di dalamnya ada file bernama `Home.php`.
+<img width="480" alt="Screen Shot 2024-03-19 at 08 36 33" src="https://github.com/dellaristasp/08dellarista/assets/134635732/6822bf4d-45d3-4f82-ac1c-52e56c83a0e3">
+Nah ketika method itu dipanggil, maka dia akan menjalankan atau mengembalikan (return) sebuah view. Parameternya adalah welcome_message. Dan nanti dia akan memanggil file tersebut. Nanti yang jalan adalah file `Views/welcome_message` :
+<img width="607" alt="Screen Shot 2024-03-19 at 08 38 04" src="https://github.com/dellaristasp/08dellarista/assets/134635732/a72aed7e-031d-424c-86e0-e3f3252819a7">
+Lalu kita coba ganti menjadi echo : Hello World!
+<img width="511" alt="Screen Shot 2024-03-19 at 08 39 15" src="https://github.com/dellaristasp/08dellarista/assets/134635732/2ee8710e-e170-48e2-98b4-d918f664dbc6">
+Maka yang tampil adalah :
+<img width="349" alt="Screen Shot 2024-03-19 at 08 41 47" src="https://github.com/dellaristasp/08dellarista/assets/134635732/4e65a957-2848-40f5-80c9-83194dfc3188">
+<img width="548" alt="Screen Shot 2024-03-19 at 09 08 13" src="https://github.com/dellaristasp/08dellarista/assets/134635732/af4d0e04-9cee-4ce6-9d43-9d65b70cb86f">
+
+
+# 16. VIEWS
+Untuk mengatur tampilan halaman.
+Disini yang kita lakukan pertama kali adalah membuat controller, untuk menangani halaman halaman statis. Seperti halaman home, about, dan halaman kontak. Jadi nanti didalam controller, kita akan membuat Controller bernama `Pages.php` yang isinya kita copy dari `Home.php` :
+<img width="365" alt="Screen Shot 2024-03-19 at 09 09 26" src="https://github.com/dellaristasp/08dellarista/assets/134635732/ed443e65-6423-451e-a434-c5b7089544a6">
+Lalu kita tambahkan routes seperti ini :
+<img width="414" alt="Screen Shot 2024-03-19 at 09 14 26" src="https://github.com/dellaristasp/08dellarista/assets/134635732/c31feca4-00bf-4756-9bd4-583f48588101">
+Maka akan muncul :
+<img width="384" alt="Screen Shot 2024-03-19 at 09 14 55" src="https://github.com/dellaristasp/08dellarista/assets/134635732/0607af84-4185-4a3e-85a5-7bd37d59fa02">
+Lalu coba kita ganti return viewnya menjadi 'home', maka dia akan mencari file `home.php` di dalam folder views.
+<img width="395" alt="Screen Shot 2024-03-19 at 09 15 50" src="https://github.com/dellaristasp/08dellarista/assets/134635732/c4e9fbf4-0520-4fe2-88de-2e8bac87f902">
+Karena sekarang file views\home belum ada, jadi ketika dijalankan akan muncul exceptions/error.
+<img width="757" alt="Screen Shot 2024-03-19 at 09 16 52" src="https://github.com/dellaristasp/08dellarista/assets/134635732/36fe18d2-0530-47af-b8ae-7da6f1f6f1ce">
+Lalu kita coba buat file `home.php` yang akan kita panggil, di folder `app\views`. Dan ketikkan tanda `!` untuk memanggil file HTML lalu kita ganti bagian tittlenya.
+<img width="555" alt="Screen Shot 2024-03-19 at 09 19 33" src="https://github.com/dellaristasp/08dellarista/assets/134635732/54eec131-c164-4cef-ba66-0dcb9158bdb2">
+Lalu ubah bodynya menjadi Hello World!
+<img width="321" alt="Screen Shot 2024-03-19 at 09 20 38" src="https://github.com/dellaristasp/08dellarista/assets/134635732/986500c6-86e3-40df-91dc-00768daa7e40">
+Maka tampilannya menjadi :
+<img width="458" alt="Screen Shot 2024-03-19 at 09 21 16" src="https://github.com/dellaristasp/08dellarista/assets/134635732/aac8c918-4f31-4ca3-b69c-aa5e5465653a">
+Lalu kita coba tambahkan public function about di `pages.php`:
+<img width="532" alt="Screen Shot 2024-03-19 at 09 22 56" src="https://github.com/dellaristasp/08dellarista/assets/134635732/80d497ba-6498-4273-8861-68f087b1015c">
+Dan di bagian Views, tambahkan file about.php.
+Lalu buat isiannya menjadi seperti ini :
+<img width="595" alt="Screen Shot 2024-03-19 at 09 24 46" src="https://github.com/dellaristasp/08dellarista/assets/134635732/55864143-a3e8-4cef-8ac6-dcfb2910b087">
+Maka tampilannya akan menjadi seperti ini :
+<img width="760" alt="Screen Shot 2024-03-19 at 09 25 50" src="https://github.com/dellaristasp/08dellarista/assets/134635732/581521d4-ebf9-4b85-b60d-fcdde6580a1d">
 
 
